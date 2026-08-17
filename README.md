@@ -9,7 +9,7 @@ Paradox Achievement Enabler (PAE) enables achievements without modifying or patc
 A proxy `winmm.dll` is placed alongside the game executable, causing Windows to load it when the game requests the system `winmm.dll`. The proxy exports the required functions, and forwards the games calls to the original implementations.
 
 The proxy DLL patches all the valid instructions found, and it makes these checks always return a valid result regardless of the actual checksum, allowing the game to treat the installation as unmodified and enable achievements.
-```c
+```cpp
 // Actual pseudocode 
 int result = std::strcmp("<actual-checksum>", "<generated-checksum>");
 auto instance = CAchievementManager::GetInstance();
@@ -27,6 +27,6 @@ I also didn't want to create a patcher that modifies the actual game binary. The
 ## Installation
 Drop the proxy DLL into the games root folder where the game executable is located: `hoi4.exe`, `stellaris.exe`, or `eu4.exe`
 
-[Download](https://github.com/latvianfarmer17/HOI4-Achievement-Enabler/releases) a compiled DLL here.
+[Download](https://github.com/latvianfarmer17/Paradox-Achievement-Enabler/releases) a compiled DLL here.
 ## Compatibility
 This should work for all versions of the game (past and future) as long as `winmm.dll` is loaded, as the DLL does not rely on "global" byte pattern scanning to locate addresses directly.
